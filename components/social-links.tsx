@@ -5,7 +5,7 @@ import { MessageCircle, Twitter, Globe, BarChart3 } from "lucide-react"
 
 export function SocialLinks() {
   const socialLinks = [
-    { name: "Telegram", icon: MessageCircle, url: "https://t.me/pongoxrp", color: "bg-blue-500" },
+    { name: "Telegram", icon: MessageCircle, url: "https://t.me/brettarmy", color: "bg-blue-500" },
     { name: "Twitter", icon: Twitter, url: "https://x.com/brettarmy_", color: "bg-sky-500" },
     { name: "Website", icon: Globe, url: "https://pongoxrp.com", color: "bg-green-500" },
     { name: "DexScreener", icon: BarChart3, url: "https://dexscreener.com", color: "bg-purple-500" },
