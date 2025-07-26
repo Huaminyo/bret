@@ -9,7 +9,7 @@ export function Navigation() {
     { name: "Basecamp(TG)", href: "https://t.me/pongoxrp", icon: MessageCircle, external: true },
     { name: "Comms(X)", href: "https://twitter.com/pongoxrp", icon: ExternalLink, external: true },
     { name: "DexScreener", href: "https://dexscreener.com", icon: BarChart3, external: true },
-    { name: "Supply(Buy)", href: "#buy", icon: ShoppingCart },
+    { name: "ApeStore(Buy)", href: "#buy", icon: ShoppingCart },
   ]
 
   return (

@@ -243,7 +243,7 @@ export default function BrettArmy() {
                     }}
                     className="block hover:text-white transition-colors"
                   >
-                    Supply(Buy)
+                    ApeStore(Buy)
                   </button>
                 </div>
               </nav>
@@ -394,7 +394,7 @@ export default function BrettArmy() {
                 onClick={() => setShowContent(false)}
                 className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
               >
-                Supply(Buy)
+                ApeStore(Buy)
               </button>
             </div>
           </nav>
