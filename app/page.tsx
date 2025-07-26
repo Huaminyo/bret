@@ -2,10 +2,12 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { Menu, X } from "lucide-react"
 
 export default function BrettArmy() {
   const [activeSection, setActiveSection] = useState("warriors")
   const [showContent, setShowContent] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const sections = {
     warriors: {
@@ -163,175 +165,363 @@ export default function BrettArmy() {
   const handleMenuClick = (section: string) => {
     setActiveSection(section)
     setShowContent(true)
+    setMobileMenuOpen(false)
   }
 
   const closeContent = () => {
     setShowContent(false)
   }
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
+
   return (
-    <div className="min-h-screen bg-black text-white flex">
-      {/* Left Sidebar */}
-      <div className="w-1/2 bg-black p-8 flex flex-col">
-        {/* Navigation */}
-        <nav className="mb-12">
-          <div className="flex space-x-8 text-gray-400 text-sm font-mono">
-            <button
-              onClick={() => setShowContent(false)}
-              className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
-            >
-              Home
-            </button>
-            <a
-              href="https://t.me/brettarmy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
-            >
-              Basecamp(TG)
-            </a>
-            <a
-              href="https://twitter.com/brettarmy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
-            >
-              Comms(X)
-            </a>
-            <a
-              href="https://dexscreener.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
-            >
-              DexScreener
-            </a>
-            <button
-              onClick={() => setShowContent(false)}
-              className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
-            >
-              Supply(Buy)
-            </button>
-          </div>
-        </nav>
-
-        {/* BRETT ARMY Logo or Content */}
-        {!showContent ? (
-          <div className="mb-16 animate-fadeIn">
-            <h1 className="text-[80px] font-black text-white leading-none tracking-tighter hover:text-green-400 transition-colors duration-500">
-              BRETT
-            </h1>
-            <h2 className="text-[60px] font-black text-white leading-none tracking-tighter hover:text-green-400 transition-colors duration-500">
-              ARMY
-            </h2>
-          </div>
-        ) : (
-          /* Content Display */
-          <div className="mb-8 animate-fadeIn">
-            <h1 className="text-[48px] font-black text-white leading-none tracking-tighter mb-8">
-              {sections[activeSection as keyof typeof sections].title}
-            </h1>
-            <div className="animate-slideIn">{sections[activeSection as keyof typeof sections].content}</div>
-          </div>
-        )}
-
-        {/* Menu Items or Close Button */}
-        {!showContent ? (
-          <div className="space-y-8 flex-1 font-mono">
-            <button
-              onClick={() => handleMenuClick("warriors")}
-              className="block text-left text-lg transition-all duration-500 transform hover:translate-x-4 hover:scale-105 text-gray-400 hover:text-white hover:glow-blue"
-            >
-              BASE TRENCH WARRIORS
-            </button>
-
-            <button
-              onClick={() => handleMenuClick("mission")}
-              className="block text-left text-lg transition-all duration-500 transform hover:translate-x-4 hover:scale-105 text-gray-400 hover:text-white hover:glow-blue"
-            >
-              BRETT'S MISSION
-            </button>
-
-            <button
-              onClick={() => handleMenuClick("army")}
-              className="block text-left text-lg transition-all duration-500 transform hover:translate-x-4 hover:scale-105 text-gray-400 hover:text-white hover:glow-blue"
-            >
-              THE BASE ARMY
-            </button>
-
-            <button
-              onClick={() => handleMenuClick("attack")}
-              className="block text-left text-lg transition-all duration-500 transform hover:translate-x-4 hover:scale-105 text-gray-400 hover:text-white hover:glow-blue"
-            >
-              THE ATTACK PLAN
-            </button>
-          </div>
-        ) : (
-          <div className="flex-1 flex items-end">
-            <button
-              onClick={closeContent}
-              className="text-white hover:text-red-400 text-lg font-mono transition-all duration-300 hover:scale-105 animate-pulse"
-            >
-              ← Back to Menu
-            </button>
-          </div>
-        )}
-
-        {/* Footer */}
-        <div className="mt-auto space-y-2 font-mono animate-fadeIn">
-          <div className="text-gray-500 text-xs leading-relaxed">
-            <div className="mb-2">©2025 BRETT ARMY. All rights reserved.</div>
-            <div className="mb-1">
-              This website and its contents are protected by copyright and other intellectual property laws.
+    <div className="min-h-screen bg-black text-white">
+      {/* Mobile Layout */}
+      <div className="lg:hidden">
+        {/* Mobile Header */}
+        <div className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-95 backdrop-blur-sm border-b border-gray-800">
+          <div className="flex items-center justify-between p-4">
+            <div className="flex items-center space-x-2">
+              <Image src="/favicon.ico" alt="Brett Army" width={32} height={32} className="rounded" />
+              <h1 className="text-lg font-bold">BRETT ARMY</h1>
             </div>
-            <div className="mb-1">Unauthorized reproduction, distribution, or modification is strictly prohibited.</div>
-            <div>BRETT ARMY is a decentralized community project on Base Network.</div>
+            <button onClick={toggleMobileMenu} className="p-2 hover:bg-gray-800 rounded-lg transition-colors">
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        {mobileMenuOpen && (
+          <div className="fixed inset-0 z-40 bg-black bg-opacity-95 backdrop-blur-sm">
+            <div className="pt-20 p-6">
+              {/* Mobile Navigation */}
+              <nav className="mb-8">
+                <div className="space-y-4 text-gray-400 text-sm font-mono">
+                  <button
+                    onClick={() => {
+                      setShowContent(false)
+                      setMobileMenuOpen(false)
+                    }}
+                    className="block hover:text-white transition-colors"
+                  >
+                    Home
+                  </button>
+                  <a
+                    href="https://t.me/brettarmy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block hover:text-white transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Basecamp(TG)
+                  </a>
+                  <a
+                    href="https://twitter.com/brettarmy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block hover:text-white transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Comms(X)
+                  </a>
+                  <a
+                    href="https://dexscreener.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block hover:text-white transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    DexScreener
+                  </a>
+                  <button
+                    onClick={() => {
+                      setShowContent(false)
+                      setMobileMenuOpen(false)
+                    }}
+                    className="block hover:text-white transition-colors"
+                  >
+                    Supply(Buy)
+                  </button>
+                </div>
+              </nav>
+
+              {/* Mobile Menu Items */}
+              <div className="space-y-6 font-mono">
+                <button
+                  onClick={() => handleMenuClick("warriors")}
+                  className="block text-left text-lg text-gray-400 hover:text-white transition-colors"
+                >
+                  BASE TRENCH WARRIORS
+                </button>
+                <button
+                  onClick={() => handleMenuClick("mission")}
+                  className="block text-left text-lg text-gray-400 hover:text-white transition-colors"
+                >
+                  BRETT'S MISSION
+                </button>
+                <button
+                  onClick={() => handleMenuClick("army")}
+                  className="block text-left text-lg text-gray-400 hover:text-white transition-colors"
+                >
+                  THE BASE ARMY
+                </button>
+                <button
+                  onClick={() => handleMenuClick("attack")}
+                  className="block text-left text-lg text-gray-400 hover:text-white transition-colors"
+                >
+                  THE ATTACK PLAN
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Mobile Content */}
+        <div className="pt-20">
+          {!showContent ? (
+            <>
+              {/* Mobile Hero */}
+              <div className="p-6 text-center">
+                <h1 className="text-4xl sm:text-5xl font-black text-white leading-none tracking-tighter mb-4">BRETT</h1>
+                <h2 className="text-3xl sm:text-4xl font-black text-white leading-none tracking-tighter mb-8">ARMY</h2>
+                <p className="text-gray-400 text-sm font-mono mb-8">
+                  Base Trench Warriors - Leading the meme coin revolution
+                </p>
+              </div>
+
+              {/* Mobile Image Gallery */}
+              <div className="space-y-4 px-4">
+                {allImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className="relative h-64 w-full rounded-lg overflow-hidden group"
+                    onClick={() => handleMenuClick(Object.keys(sections)[index])}
+                  >
+                    <Image
+                      src={image.src || "/placeholder.svg"}
+                      alt={image.title}
+                      fill
+                      className="object-cover transition-all duration-300 group-active:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                      <h3 className="text-white font-bold text-lg font-mono text-center px-4">{image.title}</h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            /* Mobile Content Display */
+            <div className="p-6">
+              <div className="mb-6">
+                <button
+                  onClick={closeContent}
+                  className="text-gray-400 hover:text-white text-sm font-mono mb-4 flex items-center"
+                >
+                  ← Back to Menu
+                </button>
+                <h1 className="text-2xl sm:text-3xl font-black text-white leading-tight tracking-tighter mb-6">
+                  {sections[activeSection as keyof typeof sections].title}
+                </h1>
+              </div>
+
+              {/* Mobile Image */}
+              <div className="relative h-64 w-full rounded-lg overflow-hidden mb-6">
+                <Image
+                  src={sections[activeSection as keyof typeof sections].image || "/placeholder.svg"}
+                  alt={sections[activeSection as keyof typeof sections].title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              {/* Mobile Content */}
+              <div className="animate-fadeIn">{sections[activeSection as keyof typeof sections].content}</div>
+            </div>
+          )}
+
+          {/* Mobile Footer */}
+          <div className="p-6 mt-12 border-t border-gray-800">
+            <div className="text-gray-500 text-xs font-mono leading-relaxed space-y-2">
+              <div>©2025 BRETT ARMY. All rights reserved.</div>
+              <div>BRETT ARMY is a decentralized community project on Base Network.</div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Right Content Area */}
-      <div className="w-1/2 relative">
-        {!showContent ? (
-          /* Scrollable Image Gallery */
-          <div className="h-screen overflow-y-auto scroll-smooth">
-            <div className="space-y-0">
-              {allImages.map((image, index) => (
-                <div key={index} className="relative h-screen w-full group transition-all duration-700 hover:scale-105">
-                  <Image
-                    src={image.src || "/placeholder.svg"}
-                    alt={image.title}
-                    fill
-                    className="object-cover transition-all duration-700 group-hover:brightness-110"
-                    priority={index === 0}
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-500"></div>
-                  <div className="absolute top-8 left-8 transform transition-all duration-500 group-hover:translate-x-4">
-                    <div className="flex items-center">
-                      <span className="text-2xl mr-4 text-white drop-shadow-lg transition-all duration-300 group-hover:text-green-400">
-                        →
-                      </span>
-                      <h2 className="text-3xl font-bold text-white font-mono drop-shadow-lg transition-all duration-300 group-hover:text-green-400">
-                        {image.title}
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              ))}
+      {/* Desktop Layout */}
+      <div className="hidden lg:flex">
+        {/* Left Sidebar */}
+        <div className="w-1/2 bg-black p-8 flex flex-col">
+          {/* Navigation */}
+          <nav className="mb-12">
+            <div className="flex space-x-8 text-gray-400 text-sm font-mono">
+              <button
+                onClick={() => setShowContent(false)}
+                className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
+              >
+                Home
+              </button>
+              <a
+                href="https://t.me/brettarmy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
+              >
+                Basecamp(TG)
+              </a>
+              <a
+                href="https://twitter.com/brettarmy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
+              >
+                Comms(X)
+              </a>
+              <a
+                href="https://dexscreener.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
+              >
+                DexScreener
+              </a>
+              <button
+                onClick={() => setShowContent(false)}
+                className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
+              >
+                Supply(Buy)
+              </button>
+            </div>
+          </nav>
+
+          {/* BRETT ARMY Logo or Content */}
+          {!showContent ? (
+            <div className="mb-16 animate-fadeIn">
+              <h1 className="text-[80px] font-black text-white leading-none tracking-tighter hover:text-green-400 transition-colors duration-500">
+                BRETT
+              </h1>
+              <h2 className="text-[60px] font-black text-white leading-none tracking-tighter hover:text-green-400 transition-colors duration-500">
+                ARMY
+              </h2>
+            </div>
+          ) : (
+            /* Content Display */
+            <div className="mb-8 animate-fadeIn">
+              <h1 className="text-[48px] font-black text-white leading-none tracking-tighter mb-8">
+                {sections[activeSection as keyof typeof sections].title}
+              </h1>
+              <div className="animate-slideIn">{sections[activeSection as keyof typeof sections].content}</div>
+            </div>
+          )}
+
+          {/* Menu Items or Close Button */}
+          {!showContent ? (
+            <div className="space-y-8 flex-1 font-mono">
+              <button
+                onClick={() => handleMenuClick("warriors")}
+                className="block text-left text-lg transition-all duration-500 transform hover:translate-x-4 hover:scale-105 text-gray-400 hover:text-white hover:glow-blue"
+              >
+                BASE TRENCH WARRIORS
+              </button>
+
+              <button
+                onClick={() => handleMenuClick("mission")}
+                className="block text-left text-lg transition-all duration-500 transform hover:translate-x-4 hover:scale-105 text-gray-400 hover:text-white hover:glow-blue"
+              >
+                BRETT'S MISSION
+              </button>
+
+              <button
+                onClick={() => handleMenuClick("army")}
+                className="block text-left text-lg transition-all duration-500 transform hover:translate-x-4 hover:scale-105 text-gray-400 hover:text-white hover:glow-blue"
+              >
+                THE BASE ARMY
+              </button>
+
+              <button
+                onClick={() => handleMenuClick("attack")}
+                className="block text-left text-lg transition-all duration-500 transform hover:translate-x-4 hover:scale-105 text-gray-400 hover:text-white hover:glow-blue"
+              >
+                THE ATTACK PLAN
+              </button>
+            </div>
+          ) : (
+            <div className="flex-1 flex items-end">
+              <button
+                onClick={closeContent}
+                className="text-white hover:text-red-400 text-lg font-mono transition-all duration-300 hover:scale-105 animate-pulse"
+              >
+                ← Back to Menu
+              </button>
+            </div>
+          )}
+
+          {/* Footer */}
+          <div className="mt-auto space-y-2 font-mono animate-fadeIn">
+            <div className="text-gray-500 text-xs leading-relaxed">
+              <div className="mb-2">©2025 BRETT ARMY. All rights reserved.</div>
+              <div className="mb-1">
+                This website and its contents are protected by copyright and other intellectual property laws.
+              </div>
+              <div className="mb-1">
+                Unauthorized reproduction, distribution, or modification is strictly prohibited.
+              </div>
+              <div>BRETT ARMY is a decentralized community project on Base Network.</div>
             </div>
           </div>
-        ) : (
-          /* Full Image Display */
-          <div className="h-screen relative animate-fadeIn">
-            <Image
-              src={sections[activeSection as keyof typeof sections].image || "/placeholder.svg"}
-              alt={sections[activeSection as keyof typeof sections].title}
-              fill
-              className="object-contain transition-all duration-500"
-              priority
-            />
-          </div>
-        )}
+        </div>
+
+        {/* Right Content Area */}
+        <div className="w-1/2 relative">
+          {!showContent ? (
+            /* Scrollable Image Gallery */
+            <div className="h-screen overflow-y-auto scroll-smooth">
+              <div className="space-y-0">
+                {allImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className="relative h-screen w-full group transition-all duration-700 hover:scale-105"
+                  >
+                    <Image
+                      src={image.src || "/placeholder.svg"}
+                      alt={image.title}
+                      fill
+                      className="object-cover transition-all duration-700 group-hover:brightness-110"
+                      priority={index === 0}
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-500"></div>
+                    <div className="absolute top-8 left-8 transform transition-all duration-500 group-hover:translate-x-4">
+                      <div className="flex items-center">
+                        <span className="text-2xl mr-4 text-white drop-shadow-lg transition-all duration-300 group-hover:text-green-400">
+                          →
+                        </span>
+                        <h2 className="text-3xl font-bold text-white font-mono drop-shadow-lg transition-all duration-300 group-hover:text-green-400">
+                          {image.title}
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            /* Full Image Display */
+            <div className="h-screen relative animate-fadeIn">
+              <Image
+                src={sections[activeSection as keyof typeof sections].image || "/placeholder.svg"}
+                alt={sections[activeSection as keyof typeof sections].title}
+                fill
+                className="object-contain transition-all duration-500"
+                priority
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
