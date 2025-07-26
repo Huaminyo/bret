@@ -8,8 +8,18 @@ export function Navigation() {
     { name: "Home", href: "#", icon: null },
     { name: "Basecamp(TG)", href: "https://t.me/brettarmy", icon: MessageCircle, external: true },
     { name: "Comms(X)", href: "https://x.com/brettarmy_", icon: ExternalLink, external: true },
-    { name: "DexScreener", href: "https://dexscreener.com", icon: BarChart3, external: true },
-    { name: "ApeStore(Buy)", href: "#buy", icon: ShoppingCart },
+    {
+      name: "DexScreener",
+      href: "https://dexscreener.com/base/0x0B84053c463492A45FF9bEd7D0EcC7A0F60eFAB3",
+      icon: BarChart3,
+      external: true,
+    },
+    {
+      name: "ApeStore(Buy)",
+      href: "https://ape.store/base/0x2eea7375c1f8fb7a4c909a02802bb420bb9210e7",
+      icon: ShoppingCart,
+      external: true,
+    },
   ]
 
   return (

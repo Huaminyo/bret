@@ -7,8 +7,18 @@ export function SocialLinks() {
   const socialLinks = [
     { name: "Telegram", icon: MessageCircle, url: "https://t.me/brettarmy", color: "bg-blue-500" },
     { name: "Twitter", icon: Twitter, url: "https://x.com/brettarmy_", color: "bg-sky-500" },
-    { name: "Website", icon: Globe, url: "https://pongoxrp.com", color: "bg-green-500" },
-    { name: "DexScreener", icon: BarChart3, url: "https://dexscreener.com", color: "bg-purple-500" },
+    {
+      name: "DexScreener",
+      icon: BarChart3,
+      url: "https://dexscreener.com/base/0x0B84053c463492A45FF9bEd7D0EcC7A0F60eFAB3",
+      color: "bg-purple-500",
+    },
+    {
+      name: "ApeStore",
+      icon: Globe,
+      url: "https://ape.store/base/0x2eea7375c1f8fb7a4c909a02802bb420bb9210e7",
+      color: "bg-green-500",
+    },
   ]
 
   return (

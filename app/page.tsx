@@ -228,7 +228,7 @@ export default function BrettArmy() {
                     Comms(X)
                   </a>
                   <a
-                    href="https://dexscreener.com"
+                    href="https://dexscreener.com/base/0x0B84053c463492A45FF9bEd7D0EcC7A0F60eFAB3"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block hover:text-white transition-colors"
@@ -236,15 +236,15 @@ export default function BrettArmy() {
                   >
                     DexScreener
                   </a>
-                  <button
-                    onClick={() => {
-                      setShowContent(false)
-                      setMobileMenuOpen(false)
-                    }}
+                  <a
+                    href="https://ape.store/base/0x2eea7375c1f8fb7a4c909a02802bb420bb9210e7"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block hover:text-white transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     ApeStore(Buy)
-                  </button>
+                  </a>
                 </div>
               </nav>
 
@@ -350,7 +350,7 @@ export default function BrettArmy() {
               <div>BRETT ARMY is a decentralized community project on Base Network.</div>
               <div className="mt-4">
                 <div className="text-white font-semibold">Contract Address (CA):</div>
-                <div className="text-gray-400 italic">Coming Soon...</div>
+                <div className="text-gray-400 break-all">0x2eea7375c1f8fb7a4c909a02802bb420bb9210e7</div>
               </div>
             </div>
           </div>
@@ -387,19 +387,21 @@ export default function BrettArmy() {
                 Comms(X)
               </a>
               <a
-                href="https://dexscreener.com"
+                href="https://dexscreener.com/base/0x0B84053c463492A45FF9bEd7D0EcC7A0F60eFAB3"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
               >
                 DexScreener
               </a>
-              <button
-                onClick={() => setShowContent(false)}
+              <a
+                href="https://ape.store/base/0x2eea7375c1f8fb7a4c909a02802bb420bb9210e7"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"
               >
                 ApeStore(Buy)
-              </button>
+              </a>
             </div>
           </nav>
 
@@ -480,7 +482,7 @@ export default function BrettArmy() {
               {/* Contract Address Section */}
               <div className="mt-4">
                 <div className="text-white font-semibold mb-1">Contract Address (CA):</div>
-                <div className="text-gray-400 italic">Coming Soon...</div>
+                <div className="text-gray-400 break-all">0x2eea7375c1f8fb7a4c909a02802bb420bb9210e7</div>
               </div>
             </div>
           </div>
