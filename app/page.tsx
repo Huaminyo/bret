@@ -219,7 +219,7 @@ export default function BrettArmy() {
                     Basecamp(TG)
                   </a>
                   <a
-                    href="https://twitter.com/brettarmy"
+                    href="https://x.com/brettarmy_"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block hover:text-white transition-colors"
@@ -379,7 +379,7 @@ export default function BrettArmy() {
                 Basecamp(TG)
               </a>
               <a
-                href="https://twitter.com/brettarmy"
+                href="https://x.com/brettarmy_"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-all duration-300 hover:scale-105 hover:glow-blue"

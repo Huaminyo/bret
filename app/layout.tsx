@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BRETT ARMY - BASE TRENCH WARRIORS",
     description: "Join the Brett Army - Base Trench Warriors in the ultimate meme coin revolution on Base Network.",
-    creator: "@brettarmy",
+    creator: "@brettarmy_",
   },
   icons: {
     icon: "/favicon.ico",
