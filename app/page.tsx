@@ -348,8 +348,8 @@ export default function BrettArmy() {
             <div className="text-gray-500 text-xs font-mono leading-relaxed space-y-2">
               <div>©2025 BRETT ARMY. All rights reserved.</div>
               <div>BRETT ARMY is a decentralized community project on Base Network.</div>
-              <div className="mt-4 pt-2 border-t border-gray-700">
-                <div className="text-yellow-400 font-semibold">Contract Address (CA):</div>
+              <div className="mt-4">
+                <div className="text-white font-semibold">Contract Address (CA):</div>
                 <div className="text-gray-400 italic">Coming Soon...</div>
               </div>
             </div>
@@ -478,8 +478,8 @@ export default function BrettArmy() {
               <div className="mb-4">BRETT ARMY is a decentralized community project on Base Network.</div>
 
               {/* Contract Address Section */}
-              <div className="pt-4 border-t border-gray-700">
-                <div className="text-yellow-400 font-semibold mb-1">Contract Address (CA):</div>
+              <div className="mt-4">
+                <div className="text-white font-semibold mb-1">Contract Address (CA):</div>
                 <div className="text-gray-400 italic">Coming Soon...</div>
               </div>
             </div>
